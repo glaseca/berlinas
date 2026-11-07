@@ -1,0 +1,55 @@
+<div class="disclaimer" role="note">
+  <div class="container disclaimer__inner">
+    <span class="disclaimer__badge">Demo</span>
+    <p>
+      Berlinas es un negocio ficticio. Nombres, precios, dirección y opiniones son
+      inventados para esta demostración.
+    </p>
+  </div>
+</div>
+
+<style>
+  .disclaimer {
+    background: var(--crust);
+    color: rgba(251, 246, 234, 0.78);
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .disclaimer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding-block: 0.55rem;
+    text-align: center;
+  }
+
+  .disclaimer__badge {
+    flex: none;
+    padding: 0.18rem 0.5rem;
+    border: 1px solid rgba(233, 185, 85, 0.55);
+    border-radius: 999px;
+    color: var(--butter);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .disclaimer p {
+    max-width: 62ch;
+  }
+
+  @media (max-width: 620px) {
+    .disclaimer__inner {
+      align-items: flex-start;
+      font-size: 0.72rem;
+      text-align: left;
+    }
+
+    .disclaimer__badge {
+      margin-top: 0.1rem;
+    }
+  }
+</style>

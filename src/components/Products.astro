@@ -1,0 +1,282 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="section vitrina" id="vitrina" aria-labelledby="vitrina-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">02 — La vitrina</p>
+        <h2 class="reveal" id="vitrina-title" style="--reveal-delay: 60ms">
+          Lo que sale<br /><em>del horno.</em>
+        </h2>
+      </div>
+      <p class="section-head__note reveal" style="--reveal-delay: 120ms">
+        Cambia con la temporada y se agota rápido. Esta es la pinta de un martes
+        cualquiera.
+      </p>
+    </div>
+
+    <div class="products">
+      {site.products.map((product, index) => (
+        <article class="product reveal" style={`--reveal-delay: ${index * 60}ms`}>
+          <figure class="product__media">
+            <img
+              src={product.image}
+              alt={product.alt}
+              width="900"
+              height="675"
+              loading="lazy"
+            />
+            {product.tag && <figcaption class="product__tag">{product.tag}</figcaption>}
+          </figure>
+
+          <div class="product__body">
+            <div class="product__head">
+              <h3>{product.name}</h3>
+              <span class="product__price">{product.price}</span>
+            </div>
+            <p>{product.description}</p>
+          </div>
+        </article>
+      ))}
+
+      <aside class="product product--cta reveal" style="--reveal-delay: 300ms">
+        <div>
+          <p class="eyebrow">Cada mañana</p>
+          <h3>¿Te guardamos<br /><em>una?</em></h3>
+          <p>
+            Llámanos antes de las 9:00 y te apartamos bollería o pan para recoger
+            cuando pases.
+          </p>
+        </div>
+        <a class="btn btn--butter" href="#encargos">
+          Hacer un encargo <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+      </aside>
+    </div>
+
+    <p class="vitrina__foot reveal">
+      Precios de ejemplo · La carta cambia cada día ·
+      <a href={site.contact.instagramUrl} target="_blank" rel="noopener noreferrer">
+        Mira la hornada de hoy en Instagram
+      </a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .vitrina {
+    position: relative;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .vitrina h2 {
+    margin-top: 1.1rem;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+  }
+
+  .vitrina h2 em {
+    font-style: italic;
+    color: var(--jam);
+  }
+
+  .section-head__note {
+    max-width: 31ch;
+    padding-bottom: 0.4rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(92, 69, 56, 0.9);
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.15rem;
+    margin-top: 2.8rem;
+  }
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 0.6rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--paper-2);
+    box-shadow: 0 18px 46px -38px rgba(46, 26, 17, 0.55);
+    transition:
+      transform 0.35s var(--ease),
+      box-shadow 0.35s var(--ease),
+      border-color 0.35s var(--ease);
+  }
+
+  .product:hover {
+    transform: translateY(-5px);
+    border-color: var(--line-strong);
+    box-shadow: 0 30px 60px -38px rgba(46, 26, 17, 0.55);
+  }
+
+  .product__media {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--paper-3);
+  }
+
+  .product__media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease);
+  }
+
+  .product:hover .product__media img {
+    transform: scale(1.05);
+  }
+
+  .product__tag {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.32rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(251, 246, 234, 0.94);
+    color: var(--jam);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .product__body {
+    padding: 1rem 0.7rem 0;
+  }
+
+  .product__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.95rem;
+  }
+
+  .product h3 {
+    font-size: 1.28rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .product__price {
+    flex: none;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--jam);
+  }
+
+  .product__body p {
+    margin-top: 0.45rem;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: rgba(92, 69, 56, 0.9);
+  }
+
+  .product--cta {
+    justify-content: space-between;
+    gap: 1.6rem;
+    padding: 1.75rem 1.5rem;
+    background:
+      radial-gradient(22rem 16rem at 100% 0%, rgba(233, 185, 85, 0.16), transparent 70%),
+      var(--crust);
+    border-color: var(--crust);
+    color: rgba(251, 246, 234, 0.78);
+  }
+
+  .product--cta:hover {
+    border-color: var(--crust);
+  }
+
+  .product--cta .eyebrow {
+    color: var(--butter);
+  }
+
+  .product--cta .eyebrow::before {
+    background: var(--butter);
+  }
+
+  .product--cta h3 {
+    margin-top: 0.9rem;
+    font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+    color: var(--paper-2);
+  }
+
+  .product--cta h3 em {
+    font-style: italic;
+    color: var(--butter);
+  }
+
+  .product--cta p {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: rgba(251, 246, 234, 0.72);
+  }
+
+  .product--cta .btn {
+    align-self: flex-start;
+  }
+
+  .vitrina__foot {
+    margin-top: 1.7rem;
+    font-size: 0.78rem;
+    color: rgba(92, 69, 56, 0.8);
+  }
+
+  .vitrina__foot a {
+    color: var(--ink-soft);
+    font-weight: 700;
+    text-decoration-color: var(--butter);
+    text-decoration-thickness: 2px;
+  }
+
+  @media (max-width: 980px) {
+    .products {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .section-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.1rem;
+    }
+
+    .section-head__note {
+      max-width: 40ch;
+      padding-bottom: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .products {
+      grid-template-columns: 1fr;
+      margin-top: 2rem;
+    }
+
+    .product {
+      padding: 0.5rem 0.5rem 1.1rem;
+    }
+
+    .product__media img {
+      aspect-ratio: 3 / 2;
+    }
+  }
+</style>

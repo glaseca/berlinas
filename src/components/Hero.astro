@@ -1,0 +1,383 @@
+---
+import { photo, site } from '../data/site';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow reveal">Obrador de barrio · Malasaña, Madrid</p>
+
+      <h1 class="hero__title reveal" id="hero-title" style="--reveal-delay: 80ms">
+        <span class="hero__brand">Berlinas</span>
+        <span class="sr-only">— obrador de pan y bollería</span>
+      </h1>
+
+      <p class="hero__claim reveal" style="--reveal-delay: 160ms">
+        Pan de verdad,<br /><em>hecho despacio.</em>
+      </p>
+
+      <p class="lead reveal" style="--reveal-delay: 240ms">
+        Masa madre, mantequilla de verdad y un horno que se enciende antes de que
+        amanezca. Bollería, croasanes y berlinas recién hechas, hasta que se acaban.
+      </p>
+
+      <div class="hero__actions reveal" style="--reveal-delay: 320ms">
+        <a class="btn" href="#vitrina">
+          Ver la vitrina <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="btn btn--ghost" href="#visitanos">Cómo llegar</a>
+      </div>
+
+      <p class="hero__meta reveal" style="--reveal-delay: 400ms">
+        <span class="hero__meta-dot" aria-hidden="true"></span>
+        Martes a domingo desde las 7:30 ·
+        <a href={site.contact.phoneHref}>{site.contact.phoneDisplay}</a>
+      </p>
+    </div>
+
+    <div class="hero__visual reveal" style="--reveal-delay: 180ms">
+      <div class="collage">
+        <figure class="collage__item collage__item--main">
+          <img
+            src={photo('1578257264874-5a9858af7d68', 900)}
+            alt="Berlina rellena cubierta de azúcar glas, recién hecha"
+            width="900"
+            height="1200"
+            fetchpriority="high"
+          />
+        </figure>
+
+        <div class="collage__stack">
+          <figure class="collage__item collage__item--a">
+            <img
+              src={photo('1530610476181-d83430b64dcd', 700)}
+              alt="Croasanes dorados apilados en la vitrina del obrador"
+              width="700"
+              height="700"
+            />
+          </figure>
+          <figure class="collage__item collage__item--b">
+            <img
+              src={photo('1613396874083-2d5fbe59ae79', 700)}
+              alt="Manos colocando una hogaza de masa madre sobre una tabla de madera"
+              width="700"
+              height="700"
+            />
+          </figure>
+        </div>
+      </div>
+
+      <div class="stamp" aria-hidden="true">
+        <svg class="stamp__ring" viewBox="0 0 100 100">
+          <defs>
+            <path
+              id="stamp-circle"
+              d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"
+            ></path>
+          </defs>
+          <text textLength="232" lengthAdjust="spacing">
+            <textPath href="#stamp-circle" startOffset="0">
+              HORNO PROPIO · MASA MADRE · DESDE 2019 ·
+            </textPath>
+          </text>
+        </svg>
+        <span class="stamp__core">✳</span>
+      </div>
+
+      <p class="hero__caption" aria-hidden="true">
+        de la primera hornada,<br />cada mañana
+        <svg viewBox="0 0 60 44" fill="none">
+          <path
+            d="M52 4C40 6 24 12 16 26c-2 4-3 8-2 12"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-dasharray="3 5"
+          ></path>
+          <path
+            d="M9 30l5 9 9-6"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-top: clamp(2.4rem, 5vw, 4.2rem);
+    padding-bottom: clamp(3.6rem, 7vw, 6.2rem);
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.04fr 0.96fr;
+    align-items: center;
+    gap: clamp(2.4rem, 5vw, 4.8rem);
+  }
+
+  .hero__title {
+    margin-top: 1.1rem;
+  }
+
+  .hero__brand {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 900;
+    font-variation-settings: 'SOFT' 90, 'WONK' 1, 'opsz' 144;
+    font-size: clamp(4.3rem, 12.4vw, 9.1rem);
+    line-height: 0.78;
+    letter-spacing: -0.055em;
+    color: var(--ink);
+  }
+
+  .hero__brand::after {
+    content: '';
+    position: absolute;
+    left: 3%;
+    right: 4%;
+    bottom: -0.015em;
+    height: 0.075em;
+    opacity: 0.9;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 20' preserveAspectRatio='none'%3E%3Cpath d='M3 14C58 5 108 17 158 10s92-5 138 2' fill='none' stroke='%23e9b955' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E")
+      no-repeat center / 100% 100%;
+  }
+
+  .hero__claim {
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+    font-family: var(--font-display);
+    font-variation-settings: 'SOFT' 45, 'WONK' 0, 'opsz' 60;
+    font-weight: 400;
+    font-size: clamp(1.85rem, 3.6vw, 2.95rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+
+  .hero__claim em {
+    font-style: italic;
+    color: var(--jam);
+  }
+
+  .hero .lead {
+    margin-top: 1.35rem;
+    max-width: 41ch;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.9rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.01em;
+    color: rgba(92, 69, 56, 0.85);
+  }
+
+  .hero__meta a {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration-color: var(--butter);
+    text-decoration-thickness: 2px;
+  }
+
+  .hero__meta-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #6f8b4f;
+    box-shadow: 0 0 0 3px rgba(111, 139, 79, 0.18);
+  }
+
+  /* ---------- collage ---------- */
+
+  .hero__visual {
+    position: relative;
+  }
+
+  .collage {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 0.9rem;
+  }
+
+  .collage__stack {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.9rem;
+  }
+
+  .collage__item {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border: 7px solid var(--paper-2);
+    border-radius: 20px;
+    background: var(--paper-3);
+    box-shadow: var(--shadow);
+  }
+
+  .collage__item--main {
+    aspect-ratio: 3 / 4;
+    transform: rotate(-1.4deg);
+  }
+
+  .collage__item--a {
+    transform: rotate(1.8deg);
+  }
+
+  .collage__item--b {
+    transform: rotate(-1.2deg);
+  }
+
+  .collage__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease);
+  }
+
+  .collage__item:hover img {
+    transform: scale(1.045);
+  }
+
+  .stamp {
+    position: absolute;
+    bottom: -1.4rem;
+    left: -1.6rem;
+    display: grid;
+    place-items: center;
+    width: clamp(6.6rem, 9vw, 8.2rem);
+    aspect-ratio: 1;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--paper-2);
+    box-shadow: 0 18px 40px -22px rgba(46, 26, 17, 0.5);
+  }
+
+  .stamp__ring {
+    position: absolute;
+    inset: 0.35rem;
+    width: calc(100% - 0.7rem);
+    height: calc(100% - 0.7rem);
+    animation: stamp-spin 26s linear infinite;
+  }
+
+  .stamp__ring text {
+    font-family: var(--font-body);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    fill: var(--jam);
+    text-transform: uppercase;
+  }
+
+  .stamp__core {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  @keyframes stamp-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .hero__caption {
+    position: absolute;
+    right: 0.3rem;
+    bottom: -3.2rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.2rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    color: rgba(92, 69, 56, 0.9);
+    transform: rotate(-2deg);
+  }
+
+  .hero__caption svg {
+    width: 2.6rem;
+    height: 2rem;
+    color: var(--jam);
+    opacity: 0.75;
+  }
+
+  @media (max-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero__visual {
+      width: 100%;
+      max-width: 34rem;
+      margin-inline: auto;
+    }
+
+    .hero__brand {
+      font-size: clamp(4rem, 18vw, 7.5rem);
+    }
+
+    .hero__caption {
+      bottom: -2.9rem;
+      right: 0.8rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .hero {
+      padding-top: 1.8rem;
+    }
+
+    .eyebrow {
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+    }
+
+    .collage {
+      gap: 0.65rem;
+    }
+
+    .collage__stack {
+      gap: 0.65rem;
+    }
+
+    .collage__item {
+      border-width: 5px;
+      border-radius: 16px;
+    }
+
+    .stamp {
+      left: -0.6rem;
+      bottom: -1rem;
+    }
+
+    .hero__caption {
+      display: none;
+    }
+
+    .hero__meta {
+      font-size: 0.75rem;
+    }
+  }
+</style>

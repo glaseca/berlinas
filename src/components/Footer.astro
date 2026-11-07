@@ -1,0 +1,207 @@
+---
+import { site } from '../data/site';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer" id="pie">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="footer__logo" href={`${base}/`} aria-label="Berlinas, inicio">
+          Berlinas
+        </a>
+        <p class="footer__tagline">
+          Pan, bollería y berlinas.<br />
+          Hecho a mano en Malasaña desde {site.since}.
+        </p>
+        <a
+          class="footer__ig"
+          href={site.contact.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {site.contact.instagram} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <nav class="footer__col" aria-label="Enlaces del pie">
+        <h2>La casa</h2>
+        <a href="#obrador">El obrador</a>
+        <a href="#vitrina">La vitrina</a>
+        <a href="#barrio">El barrio</a>
+        <a href="#encargos">Pedidos especiales</a>
+      </nav>
+
+      <div class="footer__col">
+        <h2>Encuéntranos</h2>
+        <p>
+          {site.address.street}<br />
+          {site.address.postal}
+        </p>
+        <a href={site.contact.phoneHref}>{site.contact.phoneDisplay}</a>
+        <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+        <a href="#visitanos">Cómo llegar</a>
+      </div>
+
+      <div class="footer__col">
+        <h2>Horario</h2>
+        <p>
+          Martes a viernes<br />
+          7:30 – 14:00 · 17:00 – 20:30
+        </p>
+        <p>
+          Sábado y domingo<br />
+          8:00 – 15:00
+        </p>
+        <p class="footer__closed">Lunes: descansamos</p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© {year} Berlinas · Demostración con datos ficticios</p>
+      <p>Fotografías de Unsplash · Fraunces &amp; Karla</p>
+      <a class="footer__up" href="#top">Volver arriba <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-top: clamp(3.2rem, 6vw, 4.5rem);
+    padding-bottom: 1.6rem;
+    background:
+      radial-gradient(40rem 26rem at 85% -10%, rgba(233, 185, 85, 0.12), transparent 65%),
+      var(--crust);
+    color: rgba(251, 246, 234, 0.62);
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 1fr 1fr;
+    gap: clamp(1.6rem, 4vw, 3.5rem);
+    padding-bottom: 3rem;
+  }
+
+  .footer__logo {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 900;
+    font-variation-settings: 'SOFT' 90, 'WONK' 1, 'opsz' 144;
+    font-size: clamp(2.8rem, 5vw, 3.9rem);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    color: var(--paper-2);
+    text-decoration: none;
+    transition: color 0.25s var(--ease);
+  }
+
+  .footer__logo:hover {
+    color: var(--butter);
+  }
+
+  .footer__tagline {
+    margin-top: 1rem;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: rgba(251, 246, 234, 0.65);
+  }
+
+  .footer__ig {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 1.2rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--butter);
+    text-decoration-color: rgba(233, 185, 85, 0.4);
+  }
+
+  .footer__ig:hover {
+    color: var(--butter-soft);
+  }
+
+  .footer__col h2 {
+    margin-bottom: 0.85rem;
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    color: var(--butter);
+  }
+
+  .footer__col p {
+    margin-bottom: 0.7rem;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: rgba(251, 246, 234, 0.6);
+  }
+
+  .footer__col a {
+    display: block;
+    width: fit-content;
+    margin-bottom: 0.38rem;
+    font-size: 0.84rem;
+    color: rgba(251, 246, 234, 0.72);
+    text-decoration: none;
+    transition: color 0.2s var(--ease);
+  }
+
+  .footer__col a:hover {
+    color: var(--butter);
+  }
+
+  .footer__closed {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: rgba(251, 246, 234, 0.52) !important;
+  }
+
+  .footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem 1.5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid rgba(251, 246, 234, 0.12);
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    color: rgba(251, 246, 234, 0.62);
+  }
+
+  .footer__up {
+    color: rgba(251, 246, 234, 0.72);
+    text-decoration: none;
+  }
+
+  .footer__up:hover {
+    color: var(--butter);
+  }
+
+  @media (max-width: 860px) {
+    .footer__top {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

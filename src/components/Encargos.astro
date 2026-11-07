@@ -1,0 +1,371 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="section encargos" id="encargos" aria-labelledby="encargos-title">
+  <div class="container">
+    <div class="encargos__card reveal">
+      <div class="encargos__intro">
+        <p class="eyebrow">Pedidos especiales</p>
+        <h2 id="encargos-title">
+          ¿Una tarta, una bandeja,<br /><em>un cumpleaños?</em>
+        </h2>
+        <p class="encargos__text">
+          Cuéntanos qué necesitas y te contestamos el mismo día. Encargos con 48
+          horas de antelación; para el día, mejor una llamada.
+        </p>
+
+        <ul class="encargos__direct">
+          <li>
+            <span class="encargos__direct-label">Teléfono</span>
+            <a href={site.contact.phoneHref}>{site.contact.phoneDisplay}</a>
+          </li>
+          <li>
+            <span class="encargos__direct-label">Email</span>
+            <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+          </li>
+        </ul>
+
+        <p class="encargos__aside">
+          Para bodas, oficinas y cumpleaños preparamos bandejas a medida. También
+          hacemos tartas por encargo con dos días de aviso.
+        </p>
+      </div>
+
+      <form
+        class="order-form"
+        id="order-form"
+        data-email={site.contact.email}
+        novalidate
+      >
+        <div class="field">
+          <label for="nombre">Tu nombre</label>
+          <input
+            id="nombre"
+            name="nombre"
+            type="text"
+            autocomplete="name"
+            placeholder="Lucía García"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label for="contacto">Email o teléfono</label>
+          <input
+            id="contacto"
+            name="contacto"
+            type="text"
+            autocomplete="email"
+            placeholder="hola@ejemplo.com"
+            required
+          />
+        </div>
+
+        <div class="field field--full">
+          <label for="tipo">¿Qué necesitas?</label>
+          <select id="tipo" name="tipo">
+            <option>Tarta o celebración</option>
+            <option>Bandeja de bollería</option>
+            <option>Encargo de pan</option>
+            <option>Algo para la oficina</option>
+            <option>Otra cosa</option>
+          </select>
+        </div>
+
+        <div class="field field--full">
+          <label for="mensaje">Cuéntanos un poco más</label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="4"
+            placeholder="Para 12 personas, el sábado por la mañana…"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form__actions field--full">
+          <button class="btn btn--butter" type="submit">
+            Preparar el email <span class="btn__arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="form__note" id="form-note">
+            Demostración sin servidor: se abrirá tu aplicación de correo con el
+            mensaje listo para enviar.
+          </p>
+        </div>
+
+        <p class="form__status field--full" role="status" aria-live="polite"></p>
+
+        <noscript>
+          <p class="form__note field--full">
+            Este formulario necesita JavaScript. Sin él, escríbenos directamente a
+            <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.
+          </p>
+        </noscript>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .encargos__card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.02fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding: clamp(1.7rem, 4vw, 3.2rem);
+    overflow: hidden;
+    border-radius: 30px;
+    background:
+      radial-gradient(38rem 26rem at 100% 0%, rgba(233, 185, 85, 0.18), transparent 68%),
+      radial-gradient(30rem 24rem at 0% 100%, rgba(166, 51, 40, 0.16), transparent 70%),
+      var(--crust);
+    color: rgba(251, 246, 234, 0.75);
+  }
+
+  .encargos .eyebrow {
+    color: var(--butter);
+  }
+
+  .encargos .eyebrow::before {
+    background: var(--butter);
+  }
+
+  .encargos h2 {
+    margin-top: 1rem;
+    font-size: clamp(1.9rem, 3.7vw, 2.9rem);
+    color: var(--paper-2);
+  }
+
+  .encargos h2 em {
+    font-style: italic;
+    color: var(--butter);
+  }
+
+  .encargos__text {
+    margin-top: 1rem;
+    max-width: 37ch;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(251, 246, 234, 0.72);
+  }
+
+  .encargos__direct {
+    display: grid;
+    gap: 0.85rem;
+    margin: 1.7rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .encargos__direct li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .encargos__direct-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: rgba(251, 246, 234, 0.55);
+  }
+
+  .encargos__direct a {
+    width: fit-content;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    color: var(--paper-2);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(251, 246, 234, 0.2);
+    transition:
+      color 0.2s var(--ease),
+      border-color 0.2s var(--ease);
+  }
+
+  .encargos__direct a:hover {
+    color: var(--butter);
+    border-color: var(--butter);
+  }
+
+  .encargos__aside {
+    margin-top: 1.7rem;
+    max-width: 34ch;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    color: rgba(251, 246, 234, 0.6);
+  }
+
+  /* ---------- formulario ---------- */
+
+  .order-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: start;
+    gap: 1.15rem 1.2rem;
+    padding-top: 0.4rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .field--full {
+    grid-column: 1 / -1;
+  }
+
+  .field label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(251, 246, 234, 0.65);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: 0.55rem 0.1rem;
+    border: 0;
+    border-bottom: 1px solid rgba(251, 246, 234, 0.26);
+    border-radius: 0;
+    background: transparent;
+    color: var(--paper-2);
+    font-size: 0.95rem;
+    transition: border-color 0.2s var(--ease);
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: rgba(251, 246, 234, 0.45);
+  }
+
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--butter);
+  }
+
+  .field input:focus-visible,
+  .field select:focus-visible,
+  .field textarea:focus-visible {
+    outline: 1px solid var(--butter);
+    outline-offset: 4px;
+  }
+
+  .field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='m1 1.5 5 5 5-5' stroke='%23e9b955' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.2rem center;
+    background-size: 0.7rem;
+    padding-right: 1.4rem;
+    cursor: pointer;
+  }
+
+  .field select option {
+    color: var(--ink);
+    background: var(--paper-2);
+  }
+
+  .field textarea {
+    min-height: 5.2rem;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid rgba(251, 246, 234, 0.26);
+    border-radius: 12px;
+    resize: vertical;
+    background: rgba(251, 246, 234, 0.04);
+  }
+
+  .form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.4rem;
+  }
+
+  .form__note {
+    flex: 1 1 14rem;
+    max-width: 27ch;
+    font-size: 0.68rem;
+    line-height: 1.45;
+    color: rgba(251, 246, 234, 0.55);
+  }
+
+  .form__status {
+    min-height: 1.2rem;
+    font-size: 0.78rem;
+    color: var(--butter);
+  }
+
+  @media (max-width: 880px) {
+    .encargos__card {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .order-form {
+      grid-template-columns: 1fr;
+    }
+
+    .encargos__card {
+      border-radius: 22px;
+    }
+  }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#order-form');
+
+  if (form) {
+    const status = form.querySelector<HTMLElement>('.form__status');
+    const email = form.dataset.email ?? 'hola@berlinas.es';
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const data = new FormData(form);
+      const value = (key: string) => String(data.get(key) ?? '').trim();
+
+      const nombre = value('nombre');
+      const contacto = value('contacto');
+      const tipo = value('tipo');
+      const mensaje = value('mensaje');
+
+      const subject = encodeURIComponent(`Encargo especial — ${tipo} — ${nombre}`);
+      const body = encodeURIComponent(
+        [
+          'Hola Berlinas,',
+          '',
+          `Nombre: ${nombre}`,
+          `Contacto: ${contacto}`,
+          `Tipo de encargo: ${tipo}`,
+          '',
+          mensaje,
+          '',
+          '— Enviado desde la web de demostración de Berlinas.',
+        ].join('\n')
+      );
+
+      if (status) {
+        status.textContent =
+          'Abriendo tu correo… Si no se abre, escríbenos a ' + email + '.';
+      }
+
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    });
+  }
+</script>

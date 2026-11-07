@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Disclaimer from '../components/Disclaimer.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import Obrador from '../components/Obrador.astro';
+import Products from '../components/Products.astro';
+import Reviews from '../components/Reviews.astro';
+import Visit from '../components/Visit.astro';
+import Encargos from '../components/Encargos.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base>
+  <span id="top"></span>
+  <Disclaimer />
+  <Header />
+
+  <main id="contenido">
+    <Hero />
+    <Marquee />
+    <Obrador />
+    <Products />
+    <Reviews />
+    <Visit />
+    <Encargos />
+  </main>
+
+  <Footer />
+</Base>

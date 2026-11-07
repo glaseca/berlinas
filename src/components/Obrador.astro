@@ -1,0 +1,210 @@
+---
+import { photo, site } from '../data/site';
+---
+
+<section class="section obrador" id="obrador" aria-labelledby="obrador-title">
+  <div class="container obrador__grid">
+    <div class="obrador__media reveal">
+      <figure class="obrador__figure">
+        <img
+          src={photo('1517686469429-8bdb88b9f907', 1000)}
+          alt="Manos amasando pan sobre una mesa enharinada en el obrador"
+          width="1000"
+          height="1250"
+          loading="lazy"
+        />
+      </figure>
+
+      <div class="obrador__badge" aria-hidden="true">
+        <span class="obrador__badge-year">{site.since}</span>
+        <span class="obrador__badge-text">abrimos<br />el obrador</span>
+      </div>
+    </div>
+
+    <div class="obrador__copy">
+      <p class="eyebrow reveal">01 — El obrador</p>
+
+      <h2 class="reveal" id="obrador-title" style="--reveal-delay: 60ms">
+        Todo empieza<br /><em>la noche anterior.</em>
+      </h2>
+
+      <p class="reveal" style="--reveal-delay: 120ms">
+        Amasamos por la tarde, dejamos fermentar toda la noche y encendemos el
+        horno antes de que amanezca. Sin prisas, sin aditivos y sin atajos.
+      </p>
+
+      <p class="reveal" style="--reveal-delay: 180ms">
+        Trabajamos con harinas de molino, mantequilla de verdad y recetas de
+        barrio. Lo que no sale bien, no llega a la vitrina.
+      </p>
+
+      <dl class="stats reveal" style="--reveal-delay: 240ms">
+        {site.stats.map((stat) => (
+          <div class="stat">
+            <dt class="stat__value">{stat.value}</dt>
+            <dd class="stat__label">{stat.label}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <p class="obrador__signature reveal" style="--reveal-delay: 300ms">
+        — Lucía y Mateo, al frente del obrador
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .obrador {
+    position: relative;
+  }
+
+  .obrador__grid {
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+  }
+
+  .obrador__media {
+    position: relative;
+    padding: 0 1.2rem 1.2rem 0;
+  }
+
+  .obrador__media::before {
+    content: '';
+    position: absolute;
+    inset: 1.2rem 0 0 1.2rem;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+  }
+
+  .obrador__figure {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--paper-3);
+    box-shadow: var(--shadow);
+    transform: rotate(-1.2deg);
+  }
+
+  .obrador__figure img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .obrador__badge {
+    position: absolute;
+    right: -0.4rem;
+    bottom: 2.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem 1rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--butter);
+    color: var(--crust);
+    box-shadow: 0 16px 34px -20px rgba(46, 26, 17, 0.6);
+    transform: rotate(2.4deg);
+  }
+
+  .obrador__badge-year {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.55rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .obrador__badge-text {
+    font-size: 0.58rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .obrador__copy {
+    max-width: 40rem;
+    padding-top: 0.5rem;
+  }
+
+  .obrador h2 {
+    margin-top: 1.1rem;
+    font-size: clamp(2.1rem, 4.3vw, 3.45rem);
+  }
+
+  .obrador h2 em {
+    font-style: italic;
+    color: var(--jam);
+  }
+
+  .obrador__copy > p {
+    margin-top: 1.2rem;
+    max-width: 47ch;
+  }
+
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.4rem, 3.4vw, 3rem);
+    margin: 2.1rem 0 0;
+    padding-top: 1.35rem;
+    border-top: 1px dashed var(--line-strong);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .stat__value {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-variation-settings: 'SOFT' 40, 'WONK' 1, 'opsz' 80;
+    font-size: clamp(1.6rem, 2.6vw, 2.05rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+
+  .stat__label {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(92, 69, 56, 0.8);
+  }
+
+  .obrador__signature {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.98rem;
+    color: rgba(92, 69, 56, 0.9);
+  }
+
+  @media (max-width: 880px) {
+    .obrador__grid {
+      grid-template-columns: 1fr;
+      gap: 2.8rem;
+    }
+
+    .obrador__media {
+      max-width: 30rem;
+      width: 100%;
+      margin-inline: auto;
+    }
+
+    .obrador__copy {
+      max-width: 40rem;
+      margin-inline: auto;
+    }
+  }
+</style>

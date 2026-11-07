@@ -1,0 +1,89 @@
+---
+const words = [
+  'Bollería',
+  'Berlinas',
+  'Croasanes',
+  'Pan de masa madre',
+  'Hogazas',
+  'Gallega',
+  'Horno propio',
+];
+---
+
+<p class="sr-only">
+  Bollería, berlinas, croasanes, pan de masa madre, hogazas, pan gallego y horno
+  propio.
+</p>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {[0, 1].map(() => (
+      <div class="marquee__group">
+        {words.map((word) => (
+          <span class="marquee__item">
+            {word}
+            <span class="marquee__sep">✳</span>
+          </span>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    border-block: 1px solid rgba(46, 26, 17, 0.18);
+    background: var(--butter);
+    color: var(--crust);
+    padding-block: 0.72rem;
+  }
+
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+
+  .marquee__group {
+    display: flex;
+    flex: none;
+    align-items: center;
+  }
+
+  .marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.4rem;
+    padding-right: 1.4rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-variation-settings: 'SOFT' 50, 'WONK' 1, 'opsz' 40;
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .marquee__sep {
+    font-style: normal;
+    font-size: 0.7em;
+    color: var(--jam);
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+      animation: none;
+    }
+  }
+</style>
