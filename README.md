@@ -118,4 +118,19 @@ una función serverless. Recuerda que GitHub Pages es solo estático.
   [Karla](https://fonts.google.com/specimen/Karla), vía Fontsource.
 - Fotografías: Unsplash (uso libre según su licencia).
 
+## Nota si desarrollas en Windows
+
+`npm` puede generar un `package-lock.json` incompleto para Linux: omite algunas
+dependencias opcionales de `rolldown`/`sharp` y entonces `npm ci` falla en
+GitHub Actions con errores del tipo `Missing: @emnapi/core@... from lock file`.
+
+El lockfile de este repo ya está generado incluyendo las dependencias de Linux.
+Si algún día lo regeneras desde Windows y vuelve a fallar el build, ejecuta:
+
+```bash
+npm install --package-lock-only --os=linux --cpu=x64
+```
+
+y vuelve a subir `package-lock.json`.
+
 Hecho con masa madre y TypeScript. Buen provecho.
